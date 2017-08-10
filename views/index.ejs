@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dashboard">
+  <head>
+  	<base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merck Risk report</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <% include header %>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/p5.min.js"></script>    
+<!--     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script> -->
+<!--     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script> -->
+    
+  </head>
+  <body ng-controller="DashboardController">
+  <% include navbar %>
+	<div class="upperMenu">
+		<h3><strong style="color: white;">Risk Dashboard</strong></h3>
+	</div>
+
+	<div class="sideMenu">
+		<div class="btn-group" style="width: 100%" uib-dropdown is-open="status.isopen">
+	      <button id="single-button-rep" style="width: 100%" type="button"  class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+	        Select Report <span class="caret"></span>
+	      </button>
+	      <ul class="dropdown-menu" style="width: 100%" uib-dropdown-menu >
+	        <li ng-repeat="i in reports" id="selectedReport" role="menuitem" ><a href="#" id="actualReport"  ng-click="selectArray(i.id)">{{i.report_name}}</a></li>
+	      </ul>
+	    </div>
+	    <button id="single-button-score" style="width: 100%" type="button"  class="btn btn-primary" ng-click="enterScores()">
+	        Enter Score
+	      </button>
+	    
+	</div>
+		
+	<div class="mainThings" id="mainThingsGoHere">
+		<div class="mainThings" id="circleOperations">		
+			<script type="text/javascript"  src="/js/chartAnimations.js" ></script>
+		</div>	
+		
+		<div class="mainThings" id="myDimensionDiv">
+			<h1 id="metricHeader">Further Details Here</h1>	
+			
+			
+			 
+			
+			<table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th>Metric Name</th>
+			        <th>Metric Scores</th>
+			      </tr>
+			    </thead>
+			    <tbody >
+			    
+			    <tr ng-repeat="i in metricNames">
+			        <td>{{i}}</td>
+			        <td>{{metricScores2[$index]}}</td>
+			    </tr>
+			      
+			     
+			      
+			    </tbody>
+		    </table>
+			
+			<button type="button" class="btn btn-primary">Like</button>
+			<button type="button" class="btn btn-primary">Comment</button>
+			<button type="button" class="btn btn-primary">Assign</button>
+			<button type="button" class="btn btn-primary">Share</button>
+			
+			
+		</div>
+	</div>
+	
+	<% include footer %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+<% include header %>
+<body>
+    <% include navbar %>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Trends</h1>
+            <div ng-controller="DashboardController">
+                <chartist class="ct-chart" chartist-data="chartist.barData" chartist-chart-type="Bar"></chartist>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="container">
+        <hr>
+ 
+        <% include footer %>
+    </div>
+    <!-- /container -->
+</body>
+</html>

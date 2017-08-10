@@ -1,0 +1,21 @@
+{
+  "name": "test1",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "angular-route": "^1.6.1",
+    "ejs": "*",
+    "express": "3.2.6"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "mocha": "^3.2.0",
+    "node-mocks-http": "^1.6.1",
+    "proxyquire": "^1.7.11",
+    "sequelize-mock": "^0.7.0",
+    "supertest": "^3.0.0"
+  }
+}

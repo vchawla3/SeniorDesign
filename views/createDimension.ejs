@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+<% include header %>
+<body>
+    <% include navbar %>
+ 
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Add a New Dimension</h1>
+            <div ng-controller="DimensionController">
+            	<select ng-model="selectedExistingDimension" ng-change="populateDimension()"
+            			ng-options="selectDim.Dimension_Name + ' : ' + selectDim.Dimension_Description for selectDim in existingDimensions">
+            		 <option value="">Select Existing Dimension</option>
+            		 <!-- <option ng-repeat="x for selectDim in existingDimensions" value"">{{x.Dimension_Name}} : {{x.Dimension_Description}}</option> -->
+            	</select>
+                <form ng-submit="createDimension()">
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-lg">
+                        	Dimension Name
+                            <input class="form-control" id="addDimensionName" type="text" ng-model="dim.name"
+                                size="30" placeholder="add Dimension Name" />
+                            Dimension Description
+                            <input class="form-control" id="addDimensionDescription" type="text" ng-model="dim.description"
+                                size="30" placeholder="add Dimension Description" />
+                            <br />
+                            <br />
+                            <!-- <h3>Add Metrics to this Dimension</h3> -->
+                            <!-- insert dropdown here -->
+                            <!-- <div class="btn-group" uib-dropdown dropdown-append-to-body>
+						      <button id="btn-metric-dropdown" type="button" class="btn btn-primary" uib-dropdown-toggle>
+						        {{metric.name}} <span class="caret"></span>
+						      </button>
+						      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+						        <li role="menuitem" value={{metric}}> <a href="#" ng-repeat="metric in metrics" >{{metric.name}}</a></li>
+						        <li class="divider"></li>
+						        <li role="menuitem">/*create new metric*/</li>
+						      </ul>
+						    </div> 
+						    
+  							<br />
+  							<br /> -->
+
+                            <div ng-repeat="metric in model.metrics" class="form-group row">
+	  							Metric Name
+	  							<br/>
+	  							<input class="form-control" id="metricNameInput{{$index}}" type="text" ng-model="metric.name"
+	                            size="30" placeholder="add Metric Name" />
+	                            <br/>
+	                            
+	                            Metric Description
+	                            <br/>
+	                            <input class="form-control" id="metricDescriptionInput{{$index}}" type="text" ng-model="metric.description"
+	                            size="30" placeholder="add Metric Description" />
+	                            <br/>
+	                            
+	                            Metric Type
+	                            <br/>
+	                            <label class="form-control radio-inline"><input id = "metricTypeInputBinary{{$index}}" type="radio" ng-model="metric.type" value="binary" name="binary_scalar{{$index}}">Binary</label>
+								<label class="form-control radio-inline"><input id = "metricTypeInputScalar{{$index}}" type="radio" ng-model="metric.type" value="scalar" name="binary_scalar{{$index}}">Scalar</label>
+	                            
+	                            Metric Weight
+	                            <input class="form-control" id="metricWeightInput{{$index}}" type="text" ng-model="metric.weight"
+	                            size="30" placeholder="add Metric Weight" />
+	                            <br/>
+	                            
+							</div>  
+                            <button ng-click="addMetric()" id="addNewMetric">Add another Metric</button>  
+                              
+                            <br />
+  							<br />
+  							
+  							
+                            <button ng-click="saveDimension()" class="btn btn-primary btn-lg" id="saveDimension">Save Dimension</button>
+                            	
+                            
+                        </div>
+                    </div>
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+ 
+    <div class="container">
+        <hr>
+ 
+        <% include footer %>
+    </div>
+    <!-- /container -->
+</body>
+</html>

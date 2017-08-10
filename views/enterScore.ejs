@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+<% include header %>
+<body>
+    <% include navbar %>
+ 
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Enter Scores</h1>
+            <div ng-controller="EnterScore">
+                <form ng-submit="enterScore()">
+                    
+                        <div class="input-group input-group-lg">
+                            <div ng-repeat="dimension in dimensionData">
+	                            <table style="width:100%">
+	                            <tr>
+							    	<td><b><font size="6">Dimension Name:</font></b> {{dimension.dimension_name}}</td>
+							  	</tr>
+	                            <tr>
+							    	<td><b><font size="6">Dimension Description:</font></b> {{dimension.dimension_description}}</td>
+							  	</tr>
+								</table>
+	                        	<div ng-repeat="metric in dimension.metrics">
+	                        	<table style="width:100%; border-right: 0px; border-left: 0px" border="3px" rules ="none">
+	                        	<tr>
+							    	<td><b>Metric Name:</b> {{metric.metric_name}}</td>
+							  	</tr>
+	  							<tr>
+							    	<td><b>Metric Description:</b> {{metric.metric_description}}</td>
+							  	</tr>
+							  	<tr>
+							    	<td style = "width:70%"><b>Type:</b> {{metric.metric_type}}</td>
+							    	<td style="border-right: 0px"><b>Weight:</b> {{metric.metric_weight}}</td>
+							  	</tr>	
+	                            <tr>
+	                            	<td>
+	                            		<b>Score:</b>
+	                            		<select ng-if="metric.metric_type == 'binary'" ng-model="metric.metric_score">
+		                            		<option value="0">False</option>
+		                            		<option value="1">True</option>
+		                            	</select>
+		                            	<input ng-if="metric.metric_type == 'scalar'" class="form-control" id="metricScoreInput{{$index}}" type="range" min="0" max="100" step="1" ng-model="metric.metric_score" />
+		                            	<input ng-if="metric.metric_type == 'scalar'" class="form-control" id="metricScoreInput{{$index}}" type="text" ng-model="metric.metric_score"
+		                            	size="30" placeholder="Enter Score (between 0 and 100)" readonly />
+		                            	
+	                            	</td>
+	                            </tr>
+	                            </table>	
+	                            </div>
+                            	<br />
+							</div>
+							
+							<button ng-click="saveScores()" class="btn btn-primary btn-lg" id="saveScores">Save Scores</button>
+                        </div>
+                   
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+ 
+    <div class="container">
+        <hr>
+ 
+        <% include footer %>
+    </div>
+    <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,94 @@
+.title {
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+html,body {
+     height:100%; 
+     background-color: #111;
+}
+
+
+
+div.upperMenu {
+  height: 4%;
+  width: 100%;
+  background-color: #111;
+  
+}
+
+div.sideMenu {
+    height: 100%;
+    float: left;
+    background-color: #111;
+    font-size: 22px;
+    color: white;
+    width: 12%;
+    
+    
+}
+
+td.sideMenu {
+  background-color: #111;
+  color:1b9bff;
+  width: 100%;
+  float: left;
+  
+}
+
+td.sideMenu:hover{
+  background-color: #42d1f4;
+  margin-top: -1px;
+  cursor: pointer;
+}
+
+button.differentButtonL{
+	border:none;
+	background-color:white;
+	cursor: default;
+}
+
+button.differentButtonR{
+	border:none;
+	background-color:white;
+	float:right;
+	cursor: default;
+	margin-right:210px;
+}
+
+
+
+div.mainThings {
+ background-color: #42d1f4;
+   height: 96%;
+   float: bottom;
+   float: right;
+   width: 88%;
+   
+}
+
+div#circleOperations {
+	
+   background-color: #42d1f4;
+   width: 100%;
+   height: 100%;
+}
+
+div#myDimensionDiv {
+	border: 1px solid white;
+	border-radius: 30px;
+	bottom: 0;
+	background-color: white;
+	height: 0%;
+	overflow: scroll;
+}
+
+input.smallerInput{
+	height: 50px;
+	width: 120px;
+}
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+<% include header %>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<body>
+    <% include navbar %>
+ 
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Create a New Report</h1>
+            <div ng-controller="ReportController">
+                <form ng-submit="createReport()">
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-lg">
+                        	Report Name
+                            <input class="form-control" id="addReportName" type="text" ng-model="rep.name"
+                                size="30" placeholder="add Report Name" />
+                            Report Description
+                            <input class="form-control" id="addReportDescription" type="text" ng-model="rep.description"
+                                size="30" placeholder="add Report Description" />
+                            <br />
+                            <br />
+                        
+                        	<ul class="list-group" style="width: 950px;">
+                        	  <li class="list-group-item " ><button class="differentButtonL">Dimension Name</button><button class="differentButtonR">Weight</button> </li>
+                        	  <li class="list-group-item " ng-repeat="dimension in dimensions">
+                        	  	<input type="checkbox">
+                        	  	<button class="differentButtonL">{{dimension.name}}</button> 
+                        	  	<button ng-click="deleteDimension(dimension.id)" style="float:right;" id="saveReport">Delete Dimension</button>
+	                        	<input class="smallerInput" id="weight{{$index}}" style="float:right;" ng-model="dimension.weight">
+                        	  </li>
+	                        </ul>
+	                        
+	                        <button ng-click="addDimension()" id="addDimension">Add Dimension</button> 
+  							<br />
+  							<br />
+  							<br />
+                            <button ng-click="saveReport()" class="btn btn-primary btn-lg" id="saveReport">Save Report</button>
+                            	
+                            
+                        </div>
+                    </div>
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+ 
+    <div class="container">
+        <hr>
+ 
+        <% include footer %>
+    </div>
+    <!-- /container -->
+</body>
+</html>
